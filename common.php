@@ -21,6 +21,7 @@ function get_html_docs($obj) {
     $filename = "data/$dataset/$name.mkdn";
 
     $name = str_replace('_', '\_', $obj['name']);
+    $uuid = $obj['uuid'];
     $type = $obj['type'];
     if ($config['types'][$type]) {
         $type = $config['types'][$type]['long'];
@@ -47,10 +48,10 @@ function get_html_docs($obj) {
     for ($i = 1; $i < count($arr); $i++) {
         $pieces    = explode('}}', $arr[$i], 2);
         $name      = $pieces[0];
-        $id_string = get_id_string($name);
+        $id_string = $uuid; //get_id_string($name);
         $name_esc  = str_replace('_', '\_', $name);
         $class     = 'select-object';
-        if (!isset($data[$name])) {
+        if (!isset($data[$uuid])) {
             $class .= ' missing';
             $errors[] = "Object '$obj[name]' links to unrecognized object '$name'";
         }
@@ -66,11 +67,12 @@ function get_html_docs($obj) {
 }
 
 function get_depends_markdown($header, $arr) {
+    global $data;
     $markdown = "### $header";
     if (count($arr)) {
         $markdown .= "\n\n";
         foreach ($arr as $name) {
-            $markdown .= "* {{" . $name . "}}\n";
+            $markdown .= "* {{" . data[$name]['name'] . "}}\n";
         }
         $markdown .= "\n";
     } else {
@@ -100,7 +102,7 @@ function read_data() {
     $errors = array();
 
     foreach ($json as $obj) {
-        $data[$obj['name']] = $obj;
+        $data[$obj['uuid']] = $obj;
     }
 
     foreach ($data as &$obj) {

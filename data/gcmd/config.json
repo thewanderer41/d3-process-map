@@ -1,0 +1,36 @@
+{
+	"title" : "GCMD Keywords",
+	"graph" : {
+		"linkDistance" 	: 100,
+		"charge"	: -400,
+		"height"	: 1500,
+		"numColors"	: 12,
+		"labelPadding"	: {
+			"left"	: 3,
+			"right"	: 3,
+			"top"	: 2,
+			"bottom": 2
+		},
+		"labelMargin"	: {
+			"left"	: 3,
+			"right"	: 3,
+			"top"	: 2,
+			"bottom": 2
+		},
+		"ticksWithoutCollisions" : 50
+	},
+	"types" : {
+		"Concept"	: {
+			"short"	: "Concept",
+			"long"	: "SKOS Concept"
+		}
+	},
+	"constraints"	: [
+		{
+			"type"	: "position",
+			"has"	: { "name" : "Science Keywords" },
+			"y"	: 0.15,
+			"weight": 0.7	
+		}
+	]
+}
