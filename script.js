@@ -145,11 +145,19 @@ function drawGraph() {
         .on('tick', tick);
 
     graph.svg = d3.select('#graph').append('svg')
+      .attr("width", "100%")
+      .attr("height", "100%")
+      .call(d3.behavior.zoom().on("zoom", function () {
+        graph.svg.attr("transform", "translate(" + d3.event.translate + ")" + " scale(" + d3.event.scale + ")")
+      }))
+      .append("g")
+
+/*    graph.svg = d3.select('#graph').append('svg')
         .attr('width' , graph.width  + graph.margin.left + graph.margin.right)
         .attr('height', graph.height + graph.margin.top  + graph.margin.bottom)
       .append('g')
         .attr('transform', 'translate(' + graph.margin.left + ',' + graph.margin.top + ')');
-
+*/
     graph.svg.append('defs').selectAll('marker')
         .data(['end'])
       .enter().append('marker')
