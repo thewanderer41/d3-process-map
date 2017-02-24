@@ -3,7 +3,7 @@ error_reporting(E_ALL & ~E_NOTICE);
 require_once 'markdown/Markdown.inc.php';
 use \Michelf\Markdown;
 
-$dataset    = 'default';
+$dataset    = 'gcmd';
 $dataset_qs = '';
 if (isset($_GET['dataset'])) {
     if (!preg_match('@[^a-z0-9-_ ]@i', $_GET['dataset'])) {
@@ -72,7 +72,7 @@ function get_depends_markdown($header, $arr) {
     if (count($arr)) {
         $markdown .= "\n\n";
         foreach ($arr as $name) {
-            $markdown .= "* {{" . data[$name]['name'] . "}}\n";
+            $markdown .= "* {{" . $data[$name]['name'] . "}}\n";
         }
         $markdown .= "\n";
     } else {
@@ -112,7 +112,7 @@ function read_data() {
     foreach ($data as &$obj) {
         foreach ($obj['depends'] as $name) {
             if ($data[$name]) {
-                $data[$name]['dependedOnBy'][] = $obj['name'];
+                $data[$name]['dependedOnBy'][] = $obj['uuid'];
             } else {
                 $errors[] = "Unrecognized dependency: '$obj[name]' depends on '$name'";
             }
