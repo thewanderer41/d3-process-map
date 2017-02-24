@@ -23,14 +23,20 @@
 		"Concept"	: {
 			"short"	: "Concept",
 			"long"	: "SKOS Concept"
+		},
+		{
+		"New"		: {
+			"short"	: "New",
+			"long"	: "New SKOS Concept"
 		}
 	},
 	"constraints"	: [
 		{
 			"type"	: "position",
 			"has"	: { "name" : "Science Keywords" },
-			"y"	: 0.15,
-			"weight": 0.7	
+			"x"	: 0.5,
+			"y"	: 0.01,
+			"weight": 1.7	
 		}
 	]
 }
