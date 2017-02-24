@@ -23,12 +23,15 @@
 		"Concept"	: {
 			"short"	: "Concept",
 			"long"	: "SKOS Concept"
-		},
-		{
+			},
+		"Moved"		:{
+			"short"	: "Moved",
+			"long"	: "Moved SKOS Concept"
+			},
 		"New"		: {
 			"short"	: "New",
 			"long"	: "New SKOS Concept"
-		}
+			}
 	},
 	"constraints"	: [
 		{
