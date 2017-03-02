@@ -31,6 +31,10 @@
 		"New"		: {
 			"short"	: "New",
 			"long"	: "New SKOS Concept"
+			},
+		"Old"		: {
+			"short"	: "Old",
+			"long"	: "Old SKOS Concept"
 			}
 	},
 	"constraints"	: [
