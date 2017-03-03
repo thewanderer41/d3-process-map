@@ -197,7 +197,7 @@ function drawGraph() {
       .enter().append('feMergeNode')
         .attr('in', String);
 
-    graph.legend = d3.select('#graph').append('g')
+    graph.legend = d3.select('#split-container').append('g')
         .attr('class', 'legend')
         .attr('x', 0)
         .attr('y', 0)
