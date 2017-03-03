@@ -201,7 +201,7 @@ function drawGraph() {
         .attr('class', 'legend')
         .attr('x', 0)
         .attr('y', 0);
-    graph.legned.category = graph.legend.selectAll('.category')
+    graph.legend.category = graph.legend.selectAll('.category')
         .data(d3.values(graph.categories))
         .enter()
         .append('g')
