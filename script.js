@@ -243,7 +243,7 @@ function drawGraph() {
         });
 
     $('#graph-container').on('scroll', function() {
-        graph.legend.attr('transform', 'translate(0,' + $(this).scrollTop() + ')');
+        graph.legend.category.attr('transform', 'translate(0,' + $(this).scrollTop() + ')');
     });
 
     graph.line = graph.svg.append('g').selectAll('.link')
