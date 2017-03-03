@@ -197,7 +197,7 @@ function drawGraph() {
       .enter().append('feMergeNode')
         .attr('in', String);
 
-    graph.legend = graph.svg.append('g')
+    graph.legend = d3.select('#graph').select('svg').append('g')
         .attr('class', 'legend')
         .attr('x', 0)
         .attr('y', 0);
@@ -210,8 +210,8 @@ function drawGraph() {
     graph.legendConfig = {
         rectWidth   : 12,
         rectHeight  : 12,
-        xOffset     : -10,
-        yOffset     : 30,
+        xOffset     : 10,
+        yOffset     : 45,
         xOffsetText : 20,
         yOffsetText : 10,
         lineHeight  : 15
