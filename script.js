@@ -197,20 +197,21 @@ function drawGraph() {
       .enter().append('feMergeNode')
         .attr('in', String);
 
-    graph.legend = d3.select('#split-container').append('g')
+    graph.legend = d3.select('#graph').select('svg').append('g')
         .attr('class', 'legend')
         .attr('x', 0)
-        .attr('y', 0)
-      .selectAll('.category')
+        .attr('y', 0);
+    graph.legend.category = graph.legend.selectAll('.category')
         .data(d3.values(graph.categories))
-      .enter().append('g')
+        .enter()
+        .append('g')
         .attr('class', 'category');
 
     graph.legendConfig = {
         rectWidth   : 12,
         rectHeight  : 12,
-        xOffset     : -10,
-        yOffset     : 30,
+        xOffset     : 10,
+        yOffset     : 45,
         xOffsetText : 20,
         yOffsetText : 10,
         lineHeight  : 15
@@ -218,7 +219,7 @@ function drawGraph() {
     graph.legendConfig.xOffsetText += graph.legendConfig.xOffset;
     graph.legendConfig.yOffsetText += graph.legendConfig.yOffset;
 
-    graph.legend.append('rect')
+    graph.legend.category.append('rect')
         .attr('x', graph.legendConfig.xOffset)
         .attr('y', function(d, i) {
             return graph.legendConfig.yOffset + i * graph.legendConfig.lineHeight;
@@ -232,7 +233,7 @@ function drawGraph() {
             return graph.strokeColor(d.key);
         });
 
-    graph.legend.append('text')
+    graph.legend.category.append('text')
         .attr('x', graph.legendConfig.xOffsetText)
         .attr('y', function(d, i) {
             return graph.legendConfig.yOffsetText + i * graph.legendConfig.lineHeight;
@@ -242,7 +243,7 @@ function drawGraph() {
         });
 
     $('#graph-container').on('scroll', function() {
-        graph.legend.attr('transform', 'translate(0,' + $(this).scrollTop() + ')');
+        graph.legend.category.attr('transform', 'translate(0,' + $(this).scrollTop() + ')');
     });
 
     graph.line = graph.svg.append('g').selectAll('.link')
@@ -268,6 +269,7 @@ function drawGraph() {
     graph.drag = d3.behavior.drag()
         .origin(function(d) { return d; })
         .on('dragstart', function(d) {
+            d3.event.sourceEvent.stopPropagation();
             d.oldX    = d.x;
             d.oldY    = d.y;
             d.dragged = false;
