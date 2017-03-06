@@ -35,6 +35,10 @@
 		"Old"		: {
 			"short"	: "Old",
 			"long"	: "Old SKOS Concept"
+			},
+		"New & Removed"	: {
+			"short"	: "New & Removed",
+			"long"	: "New Concept then Concept Removed"
 			}
 	},
 	"constraints"	: [
@@ -42,7 +46,7 @@
 			"type"	: "position",
 			"has"	: { "name" : "Science Keywords" },
 			"x"	: 0.5,
-			"y"	: 0.01,
+			"y"	: -0.90,
 			"weight": 1.7	
 		}
 	]
