@@ -208,8 +208,8 @@ function drawGraph() {
         .attr('class', 'category');
 
     graph.legendConfig = {
-        rectWidth   : 12,
-        rectHeight  : 12,
+        rectWidth   : 15,
+        rectHeight  : 15,
         xOffset     : 10,
         yOffset     : 45,
         xOffsetText : 20,
